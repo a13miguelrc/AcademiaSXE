@@ -22,7 +22,8 @@ from openerp.osv import fields, orm
 class Aula(orm.Model):
     _name = 'aula'
     _columns = {                
-           'nombre':fields.char('Nombre',size=50)
+           'nombre':fields.char('Nombre',size=50),
+           'descripcion':fields.char('Descripción',size=50)
        }
     
 Aula()
