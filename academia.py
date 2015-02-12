@@ -44,3 +44,5 @@ class Alumno(orm.Model):
         'curso_id':fields.many2one('curso','Curso')
     }
 Alumno()
+
+#Holaaaaa probando probando 1,2 sisisisisnononononsisisisinonononsusnonsyisnosnusnonuishnflaisufg
