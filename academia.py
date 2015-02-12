@@ -1,29 +1,46 @@
-# -*- coding: utf-8 -*-
-#################################################################################
-#
-#    OpenERP, Open Source Management Solution
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
-#    (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU General Public License for more details.
-#
-#    You should have received a copy of the GNU General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-#################################################################################
+# To change this license header, choose License Headers in Project Properties.
+# To change this template file, choose Tools | Templates
+# and open the template in the editor.
+
+__author__ = "a13miguelrc"
+__date__ = "$Feb 9, 2015 12:12:04 PM$"
+
+
 from openerp.osv import fields, orm
 
-class Aula(orm.Model):
+#Aula: nombre, descripción, código, ubicación
+class Aula(orm.Model):    
     _name = 'aula'
     _columns = {                
-           'nombre':fields.char('Nombre',size=50),
-           'descripcion':fields.char('Descripción',size=50)
+         'nombre':fields.char('Nombre',size=50),     
+         'descripcion':fields.char('Descripción',size=50),
+         'codigo':fields.char('Código',size=3),
+         'ubicacion':fields.char('Ubicación',size=50)
        }
-    
 Aula()
+
+#Curso: nombre, descripción, estudios, aula (many2many)
+class Curso(orm.Model):
+    _name = 'curso'
+    _columns = {
+        'descripcion':fields.char('Descripción',size='50'),
+        'estudios':fields.char('Estudios',size=50),
+        'aula_ids':fields.many2many('aula','curso_aula_rel','curso_id','aula_id','Aulas') 
+    }
+Curso()
+
+#Alumno: nombre, dirección, localidad, provincia, teléfono, email, fechaNacimiento, 
+#curso (many2one)
+class Alumno(orm.Model):
+    _name = 'alumno'
+    _columns = {
+        'nombre':fields.char('Nombre',size=50), 
+        'direccion':fields.char('Dirección',size=50), 
+        'localidad':fields.char('Localidad',size=50),
+        'provincia_id':fields.many2one('res.country.state','Provincia'), 
+        'telefono':fields.char('Teléfono',size=9), 
+        'email':fields.char('email',size=50),
+        'fecha_nacimiento':fields.date('Fecha Nacimiento'),
+        'curso_id':fields.many2one('curso','Curso')
+    }
+Alumno()

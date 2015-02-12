@@ -1,16 +1,64 @@
-<!-- <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!--
+Menuitem en la barra superior "Academia"
+Menuitem lateral (dependiente del anterior), que incluya un submenú para gestionar 
+cada modelo (aula, curso y alumno)
+Actions asociadas
+Vistas tree y formulario para cada modelo
+-->
 <openerp>
-	<data> -->
+    <data>
+        <record id="action_aulas_form" model="ir.actions.act_window">
+            <field name="aula">Aula</field>
+            <field name="nombre">Nombre</field>
+            <!-- BOTONES PARA SELECCION DE VISTA EN LA PARTE SUPERIOR DERECHA-->
+            <field name="view_mode">tree,form</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+       </record>
+       
+       <record id="action_cursos_form" model="ir.actions.act_window">
+            <field name="descripcion">Descripción</field>
+            <field name="estudios">Estudios</field>
+            <!-- BOTONES PARA SELECCION DE VISTA EN LA PARTE SUPERIOR DERECHA-->
+            <field name="view_mode">tree,form</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+       </record>
+       
+       <record id="action_alumnos_form" model="ir.actions.act_window">
+            <field name="nombre">Nombre</field>
+            <field name="email">Email</field>
+            <!-- BOTONES PARA SELECCION DE VISTA EN LA PARTE SUPERIOR DERECHA-->
+            <field name="view_mode">tree,form</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+       </record>
+        	
+        <menuitem id="menu_Academia" name="Academia" parent="" action="action_aulas_form"/>
+        <menuitem id="menu_Academia_lateral" name="Gestión de academia" parent="menu_Academia"/>
+        <menuitem id="submenu_Academia_aulas" name="Aulas" 
+          parent="menu_Academia_Lateral" action="action_aulas_form"/>
+        <menuitem id="submenu_Academia_cursos" name="Cursos" 
+          parent="menu_Academia_Lateral" action="action_cursos_form"/>
+        <menuitem id="submenu_Academia_alumnos" name="Alumnos" 
+          parent="menu_Academia_Lateral" action="action_alumnos_form"/>
+
         <!-- FORM PARA INCLUIR EL Campo Lugar de nacimiento en res.partner  -->
-<!--        <record id="res_partner_crm_product_form_inherit" model="ir.ui.view">
-            <field name="name">res.partner.lugar.nacimiento.view.form</field>
+        <record id="res_partner_crm_product_form_inherit" model="ir.ui.view">
+            <field name="name">res.partner.lugar.nacimiento2.view.form</field>
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
                 <field name="website" position="after">                 	
-                	
+                	<field name="lugar_nacimiento"/>
                 </field>
             </field>
         </record>  
-	</data>
-</openerp>  -->
+    </data>
+</openerp>

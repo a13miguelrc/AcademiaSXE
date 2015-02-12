@@ -20,14 +20,14 @@
 
 
 {
-    "name": "Modulo de gestion de Academias",
+    "name": "Academia",
     "version": "0.1",
     "category": "",
     "depends": [
                 'base',                
                 ],
     "author": "San Clemente",
-    "description": "Módulo para gestionar recursos de academias",
+    "description": "Módulo para gestionar una academia",
     "init_xml": [],
     "data": [             
              'academia_view.xml'
